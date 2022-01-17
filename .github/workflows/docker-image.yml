@@ -8,7 +8,7 @@ jobs:
     name: Run test suite
     runs-on: ubuntu-latest
     env:
-      COMPOSE_FILE: .ci/docker-compose.yml
+      COMPOSE_FILE: docker-compose.yml
 
     steps:
     - name: Checkout code
@@ -16,4 +16,3 @@ jobs:
 
     - name: Build docker images
       run: docker-compose build
-      working-directory: .ci
