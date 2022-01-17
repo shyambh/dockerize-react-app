@@ -18,14 +18,14 @@ services:
     
     volumes:
       # - ./postgres-db:/var/lib/postgresql/data
-      - ./../dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ../dump.sql:/docker-entrypoint-initdb.d/dump.sql
     
   node_api:
     container_name: conduit_api
     restart: on-failure
     image: conduit-api-prod:1.0.0
     build: 
-      context: ./../Conduit_NodeJS
+      context: ../Conduit_NodeJS
       target: production
       dockerfile: Dockerfile
     
@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
     image: conduit-client-prod:1.0.0
     build: 
-      context: ./../next-realworld-example-app
+      context: ../next-realworld-example-app
       target: production
       dockerfile: Dockerfile
     
