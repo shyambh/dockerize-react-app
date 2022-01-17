@@ -1,18 +1,18 @@
-name: Docker Image CI
-
+name: Build Docker Images and Test
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+  push: { branches: master }
 
 jobs:
-
-  build:
-
+  test:
+    name: Run test suite
     runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: ./../.ci/docker-compose.yml
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker-compose up
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build docker images
+      run: docker-compose build
