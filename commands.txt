@@ -1,0 +1,20 @@
+Frontend : http://localhost:3000
+Backend API : http://localhost:8080/api
+
+Commands:
+
+To Run the Postman API Tests:
+	npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var 	"USERNAME=shyambh" --global-var "EMAIL=bhattaraishyam@gmail.com" --global-var "PASSWORD=Test123$"
+
+To run the Cypress tests:
+	npx cypress run --spec .\FunctionalTests\login.spec.js
+	
+Docker : 
+	Build Image : 
+		docker build -t conduit-image .
+		
+	Start Container from Image:
+		docker run -dp 3001:3000 conduit-image
+	
+	Npm Install for conflicting React versions:
+		npm install --save --legacy-peer-deps
