@@ -16,3 +16,7 @@ jobs:
 
     - name: Build docker images
       run: docker-compose build
+
+    - name: Run Postman Tests
+      run: npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var 	"USERNAME=shyambh" --global-var "EMAIL=bhattaraishyam@gmail.com" --global-var "PASSWORD=Test123$"
+     
