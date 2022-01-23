@@ -1,4 +1,4 @@
 {
-  "integrationFolder": ".\\FunctionalTests",
+  "integrationFolder": "FunctionalTests",
   "testFiles": "**.spec.js"
 }
