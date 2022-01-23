@@ -22,6 +22,12 @@ jobs:
       working-directory: Conduit_NodeJS
 
     - name: Run Cypress Tests
-      run: npm run cy --spec "FunctionalTests/login.spec.js"
-      working-directory: next-realworld-example-app
+      uses: cypress-io/github-action@v2
+      with:
+          build: npm run build
+          start: npm start
+          working-directory: next-realworld-example-app
+
+      # run: npm run cy --spec "FunctionalTests/login.spec.js"
+      # working-directory: next-realworld-example-app
      
