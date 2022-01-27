@@ -17,8 +17,9 @@ services:
       - grepsr_shared-network
     
     volumes:
-      # - ./postgres-db:/var/lib/postgresql/data
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./postgres-db:/var/lib/postgresql/data
+      
     
   node_api:
     container_name: conduit_api
