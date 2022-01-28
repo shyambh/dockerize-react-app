@@ -35,9 +35,10 @@
 									"tests['Global variable \"token\" has been set'] = pm.globals.get('token') === user.token;",
 									"",
 									"console.log(`The user token is ${pm.globals.get('token')}`)",
-									"console.log(`PWD is ${pm.globals.get('PWD')}`)",
-									"console.log(`Email is ${pm.globals.get('EMAIL')}`)",
-									"console.log(`Username is ${pm.globals.get('USERNAME')}`)",
+									"console.log(`PWD is ${pm.environment.get(\"PWD\")}`)",
+									"",
+									"console.log(`Email is ${pm.environment.get(\"EMAIL\")}`)",
+									"console.log(`Username is ${pm.environment.get(\"USERNAME\")}}`)",
 									""
 								],
 								"type": "text/javascript"
