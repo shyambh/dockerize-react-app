@@ -58,7 +58,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\", \"password\":\"{{PASSWORD}}\"}}"
+							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\", \"password\":\"{{PWD}}\"}}"
 						},
 						"url": {
 							"raw": "{{APIURL}}/users/login",
