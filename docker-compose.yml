@@ -5,8 +5,8 @@ services:
     image: postgres:11.5
     restart: always
     environment:
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=d6rk5ijgmvcf6q
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
 
     ports:
       - 5400:5432
@@ -48,9 +48,6 @@ services:
       context: next-realworld-example-app
       target: production
       dockerfile: Dockerfile
-
-    environment:
-      - REACT_APP_API_HOST="${conduit_api}"
     
     expose:
       - 3000
