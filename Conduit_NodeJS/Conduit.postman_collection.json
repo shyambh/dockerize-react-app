@@ -38,7 +38,7 @@
 									"console.log(`PWD is ${pm.environment.get(\"PWD\")}`)",
 									"",
 									"console.log(`Email is ${pm.environment.get(\"EMAIL\")}`)",
-									"console.log(`Username is ${pm.environment.get(\"USERNAME\")}}`)",
+									"console.log(`Username is ${pm.environment.get(\"USERNAME\")}`)",
 									""
 								],
 								"type": "text/javascript"
@@ -62,7 +62,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\", \"password\":\"{{PWD}}\"}}"
+							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\", \"password\":\"{{PASSWORD}}\"}}"
 						},
 						"url": {
 							"raw": "{{APIURL}}/users/login",
