@@ -20,17 +20,17 @@ jobs:
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: docker-compose up -d
 
-    - name: Run Postman Tests
-      env:
-        TEST_EMAIL: ${{ secrets.API_TEST_EMAIL }}
-        TEST_PASSWORD: ${{ secrets.API_TEST_PASSWORD }}
-        TEST_USERNAME: ${{ secrets.API_TEST_USERNAME }}
-      run: npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var USERNAME=${TEST_USERNAME} --global-var EMAIL=${TEST_EMAIL} --global-var PASSWORD=${TEST_PASSWORD}
-      working-directory: Conduit_NodeJS
+    # - name: Run Postman Tests
+    #   env:
+    #     TEST_EMAIL: ${{ secrets.API_TEST_EMAIL }}
+    #     TEST_PASSWORD: ${{ secrets.API_TEST_PASSWORD }}
+    #     TEST_USERNAME: ${{ secrets.API_TEST_USERNAME }}
+    #   run: npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var USERNAME=${TEST_USERNAME} --global-var EMAIL=${TEST_EMAIL} --global-var PASSWORD=${TEST_PASSWORD}
+    #   working-directory: Conduit_NodeJS
 
-    - name: Run Snapshot Tests
-      run: yarn run test
-      working-directory: next-realworld-example-app
+    # - name: Run Snapshot Tests
+    #   run: yarn run test
+    #   working-directory: next-realworld-example-app
 
     - name: Run Cypress Tests
       uses: cypress-io/github-action@v2
