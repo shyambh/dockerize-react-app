@@ -5,11 +5,11 @@ services:
     image: postgres:11.5
     restart: always
     environment:
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+      - "POSTGRES_DB=${DATABASE}"
 
     ports:
-      - 5400:5432
+      - 5432:5432
 
     user: postgres
 
@@ -18,7 +18,7 @@ services:
     
     volumes:
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
-      - ./postgres-db:/var/lib/postgresql/data
+      # - ./postgres-db:/var/lib/postgresql/data
       
     
   node_api:
@@ -29,6 +29,12 @@ services:
       context: Conduit_NodeJS
       target: production
       dockerfile: Dockerfile
+    environment:
+      - "DB_USERNAME=${DB_USERNAME}"
+      - "DB_PASSWORD=${DB_PASSWORD}"
+      - "DB_HOST=${DB_HOST}"
+      - "PORT=${PORT}"
+      - "DATABASE=${DATABASE}"
     
     expose:
       - 8080

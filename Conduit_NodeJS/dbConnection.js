@@ -1,7 +1,5 @@
 const {Sequelize} = require('sequelize')
 
-const dotenv = require('dotenv');
-
 //LOCAL CONNECTION
 /* const sequelize = new Sequelize('conduit','root','password',{
     dialect: 'mysql',
@@ -19,12 +17,13 @@ const dotenv = require('dotenv');
 });
  */
 
-dotenv.config();
 
-const DB_HOST = process.env.DB_HOST;
-const DB_USERNAME = process.env.DB_USERNAME;
+console.log(`The DB_HOST is : ${process.env.DB_HOST}`);
+console.log(`The PORT is : ${process.env.PORT}`);
+console.log(`The DB_USERNAME is : ${process.env.DB_USERNAME}`);
+console.log(`The DB_PASSWORD is : ${process.env.DB_PASSWORD}`);
 
-const sequelize = new Sequelize('d6rk5ijgmvcf6q',process.env.DB_USERNAME,process.env.DB_PASSWORD,{
+const sequelize = new Sequelize(process.env.DATABASE,process.env.DB_USERNAME,process.env.DB_PASSWORD,{
     dialect: 'postgres',
     host: process.env.DB_HOST, 
     logging: false,
