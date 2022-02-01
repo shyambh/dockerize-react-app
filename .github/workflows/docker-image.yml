@@ -3,6 +3,14 @@ on:
   pull_request:
   push: { branches: master }
 
+env:
+    COMPOSE_FILE: docker-compose.yml
+    DB_HOST: postgres
+    DATABASE: ${{ secrets.POSTGRES_DB }}
+    DB_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+    DB_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
+    PORT: 5432
+
 jobs:
   test:
     name: Run test suite
@@ -14,13 +22,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build docker images
-      env:
-        DB_HOST: postgres
-        DATABASE: ${{ secrets.POSTGRES_DB }}
-        DB_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        DB_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
-        PORT: 5432
+    - name: Build docker images        
       run: docker-compose up -d
 
     # - name: Run Postman Tests
