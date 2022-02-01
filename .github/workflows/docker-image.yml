@@ -27,13 +27,10 @@ jobs:
         DB_PASSWORD: admin
         DB_USERNAME: postgres
         PORT: 5432
-      run: docker-compose up -d
+      run: docker-compose up --build  
     
     - name: Check running containers
       run: docker ps -a
-      
-    - name: Check logs
-      run: docker logs backend
 
     # - name: Run Postman Tests
     #   env:
