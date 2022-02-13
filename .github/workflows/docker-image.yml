@@ -3,7 +3,6 @@ on:
   pull_request:
   push: { branches: master }
 
-
 jobs:
   test:
     name: Run test suite
@@ -12,42 +11,41 @@ jobs:
       COMPOSE_FILE: docker-compose.yml
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Build docker images
-      env:
-        # DB_HOST: postgres
-        # DATABASE: ${{ secrets.POSTGRES_DB }}
-        # DB_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        # DB_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
-        # PORT: 5432
-        DB_HOST: postgres
-        DATABASE: d6rk5ijgmvcf6q
-        DB_PASSWORD: admin
-        DB_USERNAME: postgres
-        PORT: 5432
-      run: docker-compose up --build  
-    
-    - name: Check running containers
-      run: docker ps -a
+      - name: Build docker images
+        env:
+          # DB_HOST: postgres
+          # DATABASE: ${{ secrets.POSTGRES_DB }}
+          # DB_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          # DB_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
+          # PORT: 5432
+          DB_HOST: postgres
+          DATABASE: d6rk5ijgmvcf6q
+          DB_PASSWORD: admin
+          DB_USERNAME: postgres
+          PORT: 5432
+        run: docker-compose up
 
-    # - name: Run Postman Tests
-    #   env:
-    #     TEST_EMAIL: ${{ secrets.API_TEST_EMAIL }}
-    #     TEST_PASSWORD: ${{ secrets.API_TEST_PASSWORD }}
-    #     TEST_USERNAME: ${{ secrets.API_TEST_USERNAME }}
-    #   run: npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var USERNAME=${TEST_USERNAME} --global-var EMAIL=${TEST_EMAIL} --global-var "PASSWORD=${TEST_PASSWORD}"
-    #   working-directory: Conduit_NodeJS
+      - name: Check running containers
+        run: docker ps -a
 
-    # - name: Run Snapshot Tests
-    #   run: yarn run test
-    #   working-directory: next-realworld-example-app
+      # - name: Run Postman Tests
+      #   env:
+      #     TEST_EMAIL: ${{ secrets.API_TEST_EMAIL }}
+      #     TEST_PASSWORD: ${{ secrets.API_TEST_PASSWORD }}
+      #     TEST_USERNAME: ${{ secrets.API_TEST_USERNAME }}
+      #   run: npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var USERNAME=${TEST_USERNAME} --global-var EMAIL=${TEST_EMAIL} --global-var "PASSWORD=${TEST_PASSWORD}"
+      #   working-directory: Conduit_NodeJS
 
-    - name: Run Cypress Tests
-      uses: cypress-io/github-action@v2
-      with:
+      # - name: Run Snapshot Tests
+      #   run: yarn run test
+      #   working-directory: next-realworld-example-app
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
           build: npm run build
           start: npm start
           working-directory: next-realworld-example-app
-     
