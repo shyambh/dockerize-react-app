@@ -38,8 +38,8 @@ jobs:
           TEST_EMAIL: ${{ secrets.API_TEST_EMAIL }}
           TEST_PASSWORD: ${{ secrets.API_TEST_PASSWORD }}
           TEST_USERNAME: ${{ secrets.API_TEST_USERNAME }}
-        run: env
-        run: npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var USERNAME=${TEST_USERNAME} --global-var EMAIL=${TEST_EMAIL} --global-var "PASSWORD=${TEST_PASSWORD}"
+
+        run: env && npx newman run Conduit.postman_collection.json --delay-request 500 --global-var "APIURL=http://localhost:8080/api" --global-var USERNAME=${TEST_USERNAME} --global-var EMAIL=${TEST_EMAIL} --global-var "PASSWORD=${TEST_PASSWORD}"
         working-directory: Conduit_NodeJS
 
       # - name: Run Snapshot Tests
