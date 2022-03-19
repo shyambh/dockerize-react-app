@@ -5,8 +5,8 @@ services:
     image: postgres:11.5
     restart: always
     environment:
-      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
-      - "POSTGRES_DB=${DATABASE}"
+      - POSTGRES_PASSWORD=${DB_PASSWORD} 
+      - POSTGRES_DB=${DATABASE}
 
     ports:
       - 5432:5432
@@ -30,11 +30,11 @@ services:
       target: production
       dockerfile: Dockerfile
     environment:
-      - "DB_USERNAME=${DB_USERNAME}"
-      - "DB_PASSWORD=${DB_PASSWORD}"
-      - "DB_HOST=${DB_HOST}"
-      - "PORT=${PORT}"
-      - "DATABASE=${DATABASE}"
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - PORT=${PORT}
+      - DATABASE=${DATABASE}
     
     expose:
       - 8080
